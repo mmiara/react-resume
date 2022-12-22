@@ -48,7 +48,7 @@ Of course, all of the code is there and nothing is hidden from you so if you wou
 
 Deploying your new site to Vercel is simple, and can be done by following their guide [here.](https://vercel.com/guides/deploying-nextjs-with-vercel) When you're all done and the build succeeds, you should be given a url for your live site, go there and you'll see your new personal resume website! Congratulations!
 
-## Build Docker image and deploy to EC2 instance
+## Build Docker image and deploy to EC2 instance - Amazon AMI
 
 docker build -t test:tag
 
@@ -57,6 +57,10 @@ docker tag test:tag michaelmiara/mm-resume:initial
 docker push michaelmiara/mm-resume:initial
 
 ### Log into your EC2 instance
+
+yum install docker
+
+systemctl start docker && systemctl enable docker
 
 docker run -d -p 80:3000 --name mm-resume michaelmiara/mm-resume:draft1
 
